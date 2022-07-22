@@ -1,0 +1,17 @@
+{
+    "configurations": [
+    {
+        "name": "Attach to Edge",
+        "port": 3030,
+        "request": "attach",
+        "type": "msedge",
+        "webRoot": "${workspaceFolder}"
+    },
+        {
+            "type": "msedge",
+            "name": "http://127.0.0.1:3030/",
+            "request": "launch",
+            "url": "http://127.0.0.1:3030/"
+        }
+    ]
+}

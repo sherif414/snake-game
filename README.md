@@ -1,2 +1,2 @@
 # snake-game
- a sanke game made with typescript
+ a snake game made with typescript , vite and css

@@ -1,11 +1,18 @@
 class Snake {
-  body: Point[] = [{ x: 30, y: 40 }];
+  private _body: Point[] = [{ x: 30, y: 30 }];
   private GRID_ROWS: number;
   private GRID_COLS: number;
 
   constructor(gridDimensions: { GRID_ROWS: number; GRID_COLS: number }) {
     this.GRID_COLS = gridDimensions.GRID_COLS;
     this.GRID_ROWS = gridDimensions.GRID_ROWS;
+  }
+
+  public get body(): Point[] {
+    return this._body;
+  }
+  public set body(value: Point[]) {
+    this._body = value;
   }
 
   public consumedFood(point: Point, { ignoreHead = false } = {}): boolean {

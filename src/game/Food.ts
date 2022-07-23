@@ -15,12 +15,16 @@ export default class Food {
     return point.x < 1 || point.x > this.GRID_COLS || point.y < 1 || point.y > this.GRID_ROWS;
   }
 
-  private getRandomPoint(): Point {
+  private isOnSnake(snakeBody: Point[], point: Point): boolean {
+    return snakeBody.includes(point);
+  }
+
+  private getRandomPoint(snakeBody: Point[]): Point {
     let point: Point = { x: 0, y: 0 };
     do {
       point.x = Math.floor(Math.random() * this.GRID_COLS) + 1;
       point.y = Math.floor(Math.random() * this.GRID_ROWS) + 1;
-    } while (this.isOutsideGrid(point));
+    } while (this.isOutsideGrid(point) && this.isOnSnake(snakeBody, point));
     this.position = point;
     return point;
   }
@@ -28,10 +32,10 @@ export default class Food {
    * draws food on a random point
    *
    */
-  public draw(board: HTMLElement, redraw: boolean): void {
+  public draw(board: HTMLElement, redraw: boolean, snakeBody: Point[]): void {
     let point = this.position;
     if (redraw) {
-      point = this.getRandomPoint();
+      point = this.getRandomPoint(snakeBody);
     }
     const el = document.createElement("div");
     el.style.gridRowStart = point.y.toString();

@@ -1,6 +1,5 @@
 class Snake {
   body: Point[] = [{ x: 30, y: 40 }];
-
   private GRID_ROWS: number;
   private GRID_COLS: number;
 

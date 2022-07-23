@@ -3,7 +3,7 @@ import { Snake, Food } from "./game";
 
 const GAME_SPEED = 5;
 const snakeExpansionRate = 5;
-const GRID = { GRID_ROWS: 80, GRID_COLS: 40 };
+const GRID = { GRID_ROWS: 80, GRID_COLS: 60 };
 let score = 0;
 let inputDirection: Point = { x: 0, y: 0 };
 let lastInputDirection: Point = { x: 0, y: 0 };
@@ -58,10 +58,10 @@ const paint = (currTime: number) => {
     score++;
     scoreElement.innerHTML = score.toString();
     snake.update(snakeExpansionRate, lastInputDirection);
-    food.draw(board, true);
+    food.draw(board, true, snake.body);
   } else {
     snake.update(0, lastInputDirection);
-    food.draw(board, false);
+    food.draw(board, false, snake.body);
   }
   snake.draw(board);
 };
